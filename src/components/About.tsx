@@ -23,7 +23,7 @@ const About = () => {
               priority
             />
             <div className="mt-4 bg-white rounded-lg p-4 shadow-xl">
-              <p className="text-lg font-semibold text-primary-500">Antônio Miranda</p>
+              <p className="text-lg font-semibold text-primary-500">Elias de Assis</p>
               <p className="text-slate-600">Presidente e Fundador</p>
               <blockquote className="text-lg italic text-slate-700 mt-2">
                 &ldquo;Acreditamos que pequenas ações podem gerar grandes mudanças. Por isso, trabalhamos com amor, compromisso e responsabilidade social.&rdquo;
