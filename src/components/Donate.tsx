@@ -7,6 +7,9 @@ const Donate = () => {
   const [donationType, setDonationType] = useState('regular');
   const [donationValue, setDonationValue] = useState('50');
   const [selectedImage, setSelectedImage] = useState<{src: string, alt: string} | null>(null);
+  const [pixCopied, setPixCopied] = useState(false);
+  
+  const pixCode = "00020101021126360014br.gov.bcb.pix0114312847560001335204000053039865802BR5925ASSOCIACAO PIEDADE SEM FR6008BRASILIA62070503***6304B495";
   
   const handleDonationTypeChange = (type: string) => {
     setDonationType(type);
@@ -23,6 +26,25 @@ const Donate = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert(`Obrigado pela doação de R$ ${donationValue}! Você será redirecionado para a página de pagamento.`);
+  };
+  
+  const copyPixCode = async () => {
+    try {
+      await navigator.clipboard.writeText(pixCode);
+      setPixCopied(true);
+      setTimeout(() => setPixCopied(false), 3000); // Reset after 3 seconds
+    } catch (err) {
+      console.error('Erro ao copiar código PIX:', err);
+      // Fallback para navegadores mais antigos
+      const textArea = document.createElement('textarea');
+      textArea.value = pixCode;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setPixCopied(true);
+      setTimeout(() => setPixCopied(false), 3000);
+    }
   };
   
   const donationImpactImages = [
@@ -196,28 +218,88 @@ const Donate = () => {
                   <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">
                     Escaneie o QR Code com seu app bancário
                   </p>
+                  
+                  {/* Botão para copiar código PIX */}
+                  <div className="mt-6">
+                    <button
+                      onClick={copyPixCode}
+                      className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                        pixCopied 
+                          ? 'bg-green-500 text-white' 
+                          : 'bg-primary-600 hover:bg-primary-700 text-white'
+                      }`}
+                    >
+                      {pixCopied ? (
+                        <span className="flex items-center justify-center">
+                          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                          Código Copiado!
+                        </span>
+                      ) : (
+                        <span className="flex items-center justify-center">
+                          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                          </svg>
+                          Copie o código do PIX aqui
+                        </span>
+                      )}
+                    </button>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                      Cole o código no seu app bancário na opção PIX Copia e Cola
+                    </p>
+                  </div>
                 </div>
                 
                 <div className="space-y-4">
                   <h4 className="text-xl font-bold">Como doar via PIX:</h4>
-                  <ol className="space-y-3 text-slate-600 dark:text-slate-300">
-                    <li className="flex items-start">
-                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">1</span>
-                      <span>Abra o aplicativo do seu banco</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">2</span>
-                      <span>Vá na opção &ldquo;PIX&rdquo; ou &ldquo;Pagar com QR Code&rdquo;</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">3</span>
-                      <span>Escaneie o QR Code ao lado</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">4</span>
-                      <span>Digite o valor desejado e confirme</span>
-                    </li>
-                  </ol>
+                  
+                  {/* Opção 1: QR Code */}
+                  <div className="bg-slate-50 dark:bg-slate-700 rounded-lg p-4">
+                    <h5 className="font-semibold text-primary-600 mb-2">Opção 1: QR Code</h5>
+                    <ol className="space-y-2 text-slate-600 dark:text-slate-300">
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">1</span>
+                        <span>Abra o aplicativo do seu banco</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">2</span>
+                        <span>Vá na opção &ldquo;PIX&rdquo; ou &ldquo;Pagar com QR Code&rdquo;</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">3</span>
+                        <span>Escaneie o QR Code ao lado</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">4</span>
+                        <span>Digite o valor desejado e confirme</span>
+                      </li>
+                    </ol>
+                  </div>
+                  
+                  {/* Opção 2: Copia e Cola */}
+                  <div className="bg-slate-50 dark:bg-slate-700 rounded-lg p-4">
+                    <h5 className="font-semibold text-primary-600 mb-2">Opção 2: Copia e Cola</h5>
+                    <ol className="space-y-2 text-slate-600 dark:text-slate-300">
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">1</span>
+                        <span>Clique no botão &ldquo;Copie o código do PIX aqui&rdquo;</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">2</span>
+                        <span>Abra o aplicativo do seu banco</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">3</span>
+                        <span>Vá na opção &ldquo;PIX Copia e Cola&rdquo;</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-primary-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mr-2 mt-1">4</span>
+                        <span>Cole o código e confirme a doação</span>
+                      </li>
+                    </ol>
+                  </div>
                   
                   <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mt-6">
                     <div className="flex items-center mb-2">
