@@ -150,6 +150,98 @@ const Projects = () => {
     }
   ];
 
+  // Imagens do "ANTES" - condições difíceis
+  const beforeImages = [
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (9).jpeg',
+      alt: 'Condições precárias de moradia - situação antes da intervenção'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (10).jpeg',
+      alt: 'Família em situação de vulnerabilidade - antes do projeto'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (11).jpeg',
+      alt: 'Condições difíceis de habitação - situação inicial'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (12).jpeg',
+      alt: 'Moradia em condições precárias - antes da transformação'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (13).jpeg',
+      alt: 'Situação de vulnerabilidade habitacional - estado inicial'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (14).jpeg',
+      alt: 'Condições inadequadas de moradia - antes do projeto'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (15).jpeg',
+      alt: 'Habitação em estado precário - situação original'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (16).jpeg',
+      alt: 'Família em condições difíceis - antes da intervenção'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ AQUI ERA A MORADIA DE UMA FAMÍLIA , TRISTEZA  (17).jpeg',
+      alt: 'Moradia inadequada - condições antes do projeto'
+    }
+  ];
+
+  // Imagens do "DEPOIS" - nova realidade
+  const afterImages = [
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (1).jpeg',
+      alt: 'Nova realidade - transformação completa da moradia'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (2).jpeg',
+      alt: 'Alegria da família - novo começo após o projeto'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (3).jpeg',
+      alt: 'Moradia digna conquistada - nova vida para a família'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (4).jpeg',
+      alt: 'Resultado da transformação - esperança renovada'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (5).jpeg',
+      alt: 'Casa renovada - sonho realizado'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (6).jpeg',
+      alt: 'Novo porvir - vida transformada'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (7).jpeg',
+      alt: 'Recomeço digno - impacto do projeto social'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (8).jpeg',
+      alt: 'Transformação realizada - gratidão e alegria'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (9).jpeg',
+      alt: 'Esperança renovada - vida com dignidade'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (10).jpeg',
+      alt: 'Projeto concluído - nova realidade construída'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (11).jpeg',
+      alt: 'Sonho perdido no passado agora realizado'
+    },
+    {
+      src: '/images/piedade_sem_fronteira_ ESSA É A NOVA REALIDADE DE UM NOVO PORVIR , ALEGRIA , UMA NOVA VIDA UM RECOMEÇO (12).jpeg',
+      alt: 'Gesto nobre realizado - família transformada'
+    }
+  ];
+
   return (
     <section id="projetos" className="section-padding bg-white">
       <div className="container mx-auto px-4">
@@ -193,6 +285,79 @@ const Projects = () => {
                 onClick={() => setSelectedImage(image)}
               />
             ))}
+          </div>
+        </div>
+        
+        {/* Seção Antes e Depois */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-4">Transformação que Fazemos</h3>
+            <div className="w-24 h-1 bg-primary-500 mx-auto mb-6"></div>
+            <p className="text-slate-600 max-w-3xl mx-auto">
+              Veja como transformamos vidas, tirando famílias da miséria e oferecendo dignidade, esperança e um novo recomeço
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* ANTES */}
+            <div>
+              <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-6 rounded-r-lg">
+                <h4 className="text-2xl font-bold text-red-700 mb-2">😢 ANTES</h4>
+                <p className="text-red-600 font-medium">
+                  Tristeza, miséria e falta de esperança
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {beforeImages.map((image, index) => (
+                  <ProjectImage 
+                    key={`before-${index}`}
+                    src={image.src}
+                    alt={image.alt}
+                    onClick={() => setSelectedImage(image)}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* DEPOIS */}
+            <div>
+              <div className="bg-green-50 border-l-4 border-green-500 p-6 mb-6 rounded-r-lg">
+                <h4 className="text-2xl font-bold text-green-700 mb-2">😊 DEPOIS</h4>
+                <p className="text-green-600 font-medium">
+                  Alegria, nova vida e um recomeço digno
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {afterImages.map((image, index) => (
+                  <ProjectImage 
+                    key={`after-${index}`}
+                    src={image.src}
+                    alt={image.alt}
+                    onClick={() => setSelectedImage(image)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <div className="bg-primary-50 border border-primary-200 rounded-lg p-8 max-w-4xl mx-auto">
+              <h4 className="text-2xl font-bold text-primary-700 mb-4">💙 Você Pode Fazer Parte Desta Transformação</h4>
+              <p className="text-primary-600 mb-6">
+                Com sua ajuda, mais famílias podem sair da situação de vulnerabilidade e conquistar uma vida digna. 
+                Juntos, transformamos sonhos perdidos em realidade!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="#doar" className="btn-primary">
+                  Fazer uma Doação
+                </Link>
+                <Link href="#voluntarios" className="bg-white text-primary-600 border-2 border-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors">
+                  Ser Voluntário
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
         

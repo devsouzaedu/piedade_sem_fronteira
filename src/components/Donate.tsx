@@ -171,6 +171,71 @@ const Donate = () => {
           </div>
         </div>
         
+        {/* Seção QR Code PIX */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="bg-white dark:bg-slate-800 text-slate-800 dark:text-white rounded-lg overflow-hidden shadow-xl">
+            <div className="bg-primary-700 p-6 text-center">
+              <h3 className="text-2xl font-bold text-white mb-2">Doe via PIX</h3>
+              <p className="text-primary-100">
+                Forma rápida e segura de fazer sua doação
+              </p>
+            </div>
+            
+            <div className="p-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="text-center">
+                  <div className="bg-white p-4 rounded-lg shadow-md inline-block">
+                    <Image 
+                      src="/images/piedade_sem_fronteira _ qrcode.png"
+                      alt="QR Code PIX para doações - Piedade Sem Fronteira"
+                      width={200}
+                      height={200}
+                      className="w-48 h-48 mx-auto"
+                    />
+                  </div>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">
+                    Escaneie o QR Code com seu app bancário
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  <h4 className="text-xl font-bold">Como doar via PIX:</h4>
+                  <ol className="space-y-3 text-slate-600 dark:text-slate-300">
+                    <li className="flex items-start">
+                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">1</span>
+                      <span>Abra o aplicativo do seu banco</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">2</span>
+                      <span>Vá na opção &ldquo;PIX&rdquo; ou &ldquo;Pagar com QR Code&rdquo;</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">3</span>
+                      <span>Escaneie o QR Code ao lado</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="bg-primary-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">4</span>
+                      <span>Digite o valor desejado e confirme</span>
+                    </li>
+                  </ol>
+                  
+                  <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mt-6">
+                    <div className="flex items-center mb-2">
+                      <svg className="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-green-700 dark:text-green-300 font-medium">PIX é seguro e instantâneo</span>
+                    </div>
+                    <p className="text-green-600 dark:text-green-400 text-sm">
+                      Sua doação chegará imediatamente e será usada para transformar vidas!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* Seção de Impacto das Doações */}
         <div className="mt-16">
           <h3 className="text-2xl font-bold mb-8 text-center">O Impacto da Sua Doação</h3>
