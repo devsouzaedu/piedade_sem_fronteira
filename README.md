@@ -128,7 +128,7 @@ public/
 
 **Piedade Sem Fronteira**
 - 📧 Email: contato@piedadesemfronteira.org
-- 📱 Telefone: (11) 99975-8472
+- 📱 Telefone: (44) 99975-8472
 - 📍 Localização: Rua Chaves 251, Jd Califórnia, Barueri - SP
 
 ## 📄 Licença
