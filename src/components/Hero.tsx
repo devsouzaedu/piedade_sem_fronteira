@@ -29,49 +29,52 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 3000); // Slide mais rápido: 3 segundos ao invés de 5
     
     return () => clearInterval(interval);
   }, [slides.length]);
   
   return (
     <section className="relative bg-white overflow-hidden">
-      <div className="container mx-auto px-4 py-20 md:py-32">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Container com margens reduzidas para mobile */}
+      <div className="container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-20 lg:py-32">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+          {/* Conteúdo textual */}
           <div className="text-center md:text-left">
             <Image 
               src="/images/logo_piedade_sem_fronteira_menor_somentesimbolo.png" 
               alt="Logo Piedade Sem Fronteira" 
-              width={100} 
-              height={100}
-              className="mx-auto md:mx-0 mb-8 w-auto h-auto"
+              width={80} 
+              height={80}
+              className="mx-auto md:mx-0 mb-4 sm:mb-6 md:mb-8 w-auto h-auto"
             />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
               Transformando vidas com <span className="text-primary-500">solidariedade</span>
             </h1>
             
-            <p className="text-slate-700 text-lg md:text-xl mb-8">
+            <p className="text-slate-700 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 px-2 sm:px-0">
               Somos uma organização não governamental voltada para a ajuda humanitária, com o propósito de transformar vidas por meio da solidariedade e da ação social.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Link href="#doar" className="btn-primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start px-2 sm:px-0">
+              <Link href="#doar" className="btn-primary text-sm sm:text-base">
                 Doar Agora
               </Link>
-              <Link href="#voluntarios" className="btn-secondary">
+              <Link href="#voluntarios" className="btn-secondary text-sm sm:text-base">
                 Seja Voluntário
               </Link>
             </div>
           </div>
           
-          <div className="relative h-64 md:h-auto order-first md:order-last">
-            <div className="relative z-10 bg-white rounded-lg shadow-xl overflow-hidden h-full">
-              {/* Slideshow */}
-              <div className="relative w-full h-[400px]">
+          {/* Área do slideshow */}
+          <div className="relative order-first md:order-last">
+            <div className="relative z-10 bg-white rounded-lg shadow-xl overflow-hidden">
+              {/* Slideshow sem indicadores */}
+              <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]">
                 {slides.map((slide, index) => (
                   <div 
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
+                    className={`absolute inset-0 transition-opacity duration-700 ${
                       index === currentSlide ? 'opacity-100' : 'opacity-0'
                     }`}
                   >
@@ -80,41 +83,29 @@ const Hero = () => {
                       alt={slide.alt}
                       fill
                       className="object-cover"
+                      priority={index === 0}
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-                      <p className="text-sm md:text-base">{slide.alt}</p>
+                    <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 sm:p-3 md:p-4">
+                      <p className="text-xs sm:text-sm md:text-base">{slide.alt}</p>
                     </div>
                   </div>
                 ))}
               </div>
               
-              {/* Indicadores de slide */}
-              <div className="absolute bottom-16 left-0 right-0 flex justify-center gap-2 z-20">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-3 h-3 rounded-full ${
-                      index === currentSlide ? 'bg-primary-500' : 'bg-white bg-opacity-50'
-                    }`}
-                    onClick={() => setCurrentSlide(index)}
-                  />
-                ))}
-              </div>
-              
-              {/* Informações */}
-              <div className="p-6">
-                <div className="grid grid-cols-3 gap-2 items-center justify-center">
-                  <div className="bg-white shadow p-3 rounded-lg">
-                    <p className="text-3xl font-bold text-primary-500">250+</p>
-                    <p className="text-sm">Famílias Atendidas</p>
+              {/* Informações - layout responsivo melhorado */}
+              <div className="p-3 sm:p-4 md:p-6">
+                <div className="grid grid-cols-3 gap-1 sm:gap-2 md:gap-3">
+                  <div className="bg-white shadow p-2 sm:p-3 rounded-lg text-center">
+                    <p className="text-lg sm:text-2xl md:text-3xl font-bold text-primary-500">250+</p>
+                    <p className="text-xs sm:text-sm">Famílias Atendidas</p>
                   </div>
-                  <div className="bg-white shadow p-3 rounded-lg">
-                    <p className="text-3xl font-bold text-primary-500">50+</p>
-                    <p className="text-sm">Voluntários</p>
+                  <div className="bg-white shadow p-2 sm:p-3 rounded-lg text-center">
+                    <p className="text-lg sm:text-2xl md:text-3xl font-bold text-primary-500">50+</p>
+                    <p className="text-xs sm:text-sm">Voluntários</p>
                   </div>
-                  <div className="bg-white shadow p-3 rounded-lg">
-                    <p className="text-3xl font-bold text-primary-500">5+</p>
-                    <p className="text-sm">Anos de Atuação</p>
+                  <div className="bg-white shadow p-2 sm:p-3 rounded-lg text-center">
+                    <p className="text-lg sm:text-2xl md:text-3xl font-bold text-primary-500">5+</p>
+                    <p className="text-xs sm:text-sm">Anos de Atuação</p>
                   </div>
                 </div>
               </div>
@@ -135,6 +126,6 @@ const Hero = () => {
       </div>
     </section>
   );
-};
-
-export default Hero; 
+  };
+  
+  export default Hero; 
